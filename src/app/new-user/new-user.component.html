@@ -1,0 +1,13 @@
+<div class="container">
+    <form #userForm = "ngForm" (ngSubmit) = "onSubmit()" novalidate>
+             {{userForm.value | json}}
+            <hr>
+            {{userForm.form.valid}}
+            <div class="form">
+              <label>Username</label>
+              <input type="text" required #name = "ngModel" name="username" [(ngModel)]="userModel.name">
+            </div>
+            <button class="btn btn-danger" [disabled] = "userForm.form.valid == false" (click) = "fireEvent()">Add User</button>
+    </form>
+        
+</div>

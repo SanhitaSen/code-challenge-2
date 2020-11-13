@@ -1,0 +1,23 @@
+button{
+    margin-left: 10px;
+    margin-top: -2px;
+    padding:12px;
+    background-color: blue;
+    color: white;
+}
+div{
+    display: inline-flex;
+}
+input{
+    font-size: 30px;
+}
+
+label{
+    font-size: 30px;
+}
+.container
+{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
