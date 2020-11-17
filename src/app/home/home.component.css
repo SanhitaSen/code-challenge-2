@@ -1,0 +1,15 @@
+table,th,td
+{
+    padding: 10px 0px;
+    text-align: center;
+}
+.table
+{
+    width: 80%;
+    margin: auto;
+    font-size: 1.5vw;
+}
+th{
+    background-color: rgb(99, 99, 105);
+    color: white;
+}

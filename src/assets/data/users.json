@@ -1,0 +1,26 @@
+[
+    {
+        "lastName": "Doe",
+        "_id": "5fae5230c269f04f3c85f653",
+        "email": "abc@gmail.com",
+        "age": 32,
+        "firstName": "Some Value",
+        "__v": 0
+    },
+    {
+        "lastName": "NA",
+        "_id": "5fae5736799e3208a010e174",
+        "email": "ray@gmail.com",
+        "age": 43,
+        "firstName": "Ray",
+        "__v": 0
+    },
+    {
+        "lastName": "Sen",
+        "_id": "5fae5789799e3208a010e175",
+        "email": "sanhita@gmail.com",
+        "age": 37,
+        "firstName": "Sanhita",
+        "__v": 0
+    }
+]

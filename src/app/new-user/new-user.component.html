@@ -1,13 +1,100 @@
+<div id="form-submitted" style="display: none">
+  <h1><sup>*</sup>User Added!</h1>
+</div>
 <div class="container">
-    <form #userForm = "ngForm" (ngSubmit) = "onSubmit()" novalidate>
-             {{userForm.value | json}}
-            <hr>
-            {{userForm.form.valid}}
-            <div class="form">
-              <label>Username</label>
-              <input type="text" required #name = "ngModel" name="username" [(ngModel)]="userModel.name">
-            </div>
-            <button class="btn btn-danger" [disabled] = "userForm.form.valid == false" (click) = "fireEvent()">Add User</button>
-    </form>
-        
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(); userForm.reset()" novalidate>
+    <!-- {{userForm.value | json}} -->
+    <h1>Add New User</h1>
+    <hr />
+    <!-- {{userForm.form.valid}} -->
+    <div class="form-group">
+      <label>Email</label>
+      <input
+        type="email"
+        required
+        #email="ngModel"
+        class="form-control is-invalid"
+        [class.is-invalid]="email.invalid && email.touched"
+        name="email"
+        [(ngModel)]="userModel.email"
+      />
+      <div>
+        <small
+          [class.is-required]="email.valid || email.untouched"
+          class="text-danger"
+          >This field is required!</small
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Age</label>
+      <input
+        type="number"
+        required
+        #age="ngModel"
+        class="form-control is-invalid"
+        [class.is-invalid]="age.invalid && age.touched"
+        pattern="^(?:2[1-9]|[3-5][0-9]|60)$"
+        name="age"
+        [(ngModel)]="userModel.age"
+      />
+      <!-- {{age.errors | json}} -->
+      <div *ngIf="age.invalid && age.touched">
+        <small *ngIf="age.errors?.required" class="text-danger"
+          >This field is required</small
+        >
+        <small *ngIf="age.errors?.pattern" class="text-danger"
+          >Age must be between 21 to 60 years.</small
+        >
+      </div>
+      <!-- 
+              <div style="display: flex; color: red;">
+                <small [class.is-required] = "age.valid || age.untouched" style="color: red;">Age must be between 21 to 60 years.</small>
+            </div> -->
+    </div>
+
+    <div class="form-group">
+      <label>First Name</label>
+      <input
+        type="text"
+        class="form-control is-invalid"
+        [class.is-invalid]="firstName.invalid && firstName.touched"
+        required
+        #firstName="ngModel"
+        name="firstName"
+        [(ngModel)]="userModel.firstName"
+      />
+      <div>
+        <small
+          [class.is-required]="firstName.valid || firstName.untouched"
+          class="text-danger"
+          >This field is required!</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        #lastName="ngModel"
+        name="lastName"
+        [(ngModel)]="userModel.lastName"
+      />
+    </div>
+    <div class="button">
+      <button
+        style="outline: none"
+        class="btn btn-success"
+        [disabled]="userForm.form.valid == false"
+        (click)="post()"
+      >
+        Add User
+      </button>
+      <button style="outline: none" class="btn btn-primary" (click)="cancel()">
+        Cancel
+      </button>
+    </div>
+  </form>
 </div>

@@ -1,0 +1,12 @@
+.navbar
+{
+    background-color: purple;
+}
+a{
+    color: white;
+    margin-right: 10px;
+    font-size: 30px;
+}
+a:hover{
+    background-color: rgb(165, 12, 165);
+}

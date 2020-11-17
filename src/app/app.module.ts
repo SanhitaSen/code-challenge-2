@@ -7,7 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common//http';
+import {UsersService} from './users.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,9 +18,11 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,FormsModule
+    AppRoutingModule,
+    FormsModule, 
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

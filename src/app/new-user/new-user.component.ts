@@ -1,33 +1,30 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
-
+import {UsersService} from '../users.service';
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
   styleUrls: ['./new-user.component.css']
 })
 export class NewUserComponent implements OnInit {
-  enrollServ: any;
-
-  constructor() { }
-  submitted= false;
+  constructor(private userServ: UsersService) { }
   ngOnInit(): void {
   }
-  userModel = new User('');
-   allUsers:string[] = [];
+  userModel = new User('', 'NA','', null, null);
   onSubmit()
   {
      console.log(this.userModel);
-     this.allUsers.push(this.userModel.name);
-     console.log(this.allUsers);
-     this.userModel.name = '';
+     let submitted = document.getElementById('form-submitted');
+     submitted.style.display = "block";
      
   }
-  @Output() childEvent = new EventEmitter();
-  fireEvent()
-  {
-    this.childEvent.emit(this.allUsers);
-  }
+    post() {
+        console.log(this.userModel);
+        this.userServ.createUser(this.userModel);        
+    }
+    cancel() {
+        this.userModel = {firstName: '', lastName: 'NA', email: '',  age:null, _id: null }
+    }
 
-  }
+ }
 
